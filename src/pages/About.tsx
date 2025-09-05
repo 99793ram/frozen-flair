@@ -2,8 +2,11 @@ import Navigation from "@/components/Navigation";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
+import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 
 const About = () => {
+  useScrollAnimation();
+  
   const teamMembers = [
     {
       name: "Sarah Mitchell",
@@ -79,7 +82,7 @@ const About = () => {
         {/* Brand Story */}
         <section className="mb-20">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <div className="space-y-6">
+            <div className="space-y-6 scroll-slide-in-left">
               <Badge variant="outline" className="px-4 py-2">
                 Our Philosophy
               </Badge>
@@ -109,7 +112,7 @@ const About = () => {
               </Button>
             </div>
             
-            <div className="relative">
+            <div className="relative scroll-scale-in">
               <div className="bg-gradient-to-br from-primary/10 to-accent/10 rounded-2xl p-8 md:p-12">
                 <div className="text-center space-y-6">
                   <div className="text-6xl mb-4">🏭</div>
@@ -152,7 +155,7 @@ const About = () => {
 
           <div className="grid md:grid-cols-3 gap-8">
             {teamMembers.map((member, index) => (
-              <Card key={index} className="hover:shadow-card transition-all duration-300 hover:-translate-y-1 border-border/50 overflow-hidden">
+              <Card key={index} className="hover:shadow-card transition-all duration-300 hover:-translate-y-1 border-border/50 overflow-hidden scroll-fade-in" style={{ animationDelay: `${index * 0.2}s` }}>
                 <div className="p-6 text-center">
                   <div className="w-20 h-20 bg-gradient-to-br from-primary/20 to-accent/20 rounded-full flex items-center justify-center text-3xl mx-auto mb-4">
                     {member.image}

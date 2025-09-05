@@ -8,11 +8,14 @@ import { Input } from "@/components/ui/input";
 import { ArrowRight, Star, Users, Award } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useToast } from "@/hooks/use-toast";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 
 const Index = () => {
   const { toast } = useToast();
   const [email, setEmail] = useState("");
+  
+  useScrollAnimation();
 
   const handleNewsletterSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -45,7 +48,7 @@ const Index = () => {
       {/* Why Choose Us Section */}
       <section className="py-20 bg-background">
         <div className="container mx-auto px-4">
-          <div className="text-center mb-16">
+          <div className="text-center mb-16 scroll-fade-in">
             <Badge variant="outline" className="mb-4 px-4 py-2">
               Why Choose MR Milkery
             </Badge>
@@ -60,7 +63,7 @@ const Index = () => {
           </div>
 
           <div className="grid md:grid-cols-3 gap-8">
-            <Card className="p-8 text-center hover:shadow-card transition-all duration-300 hover:-translate-y-2 border-border/50">
+            <Card className="p-8 text-center hover:shadow-card transition-all duration-300 hover:-translate-y-2 border-border/50 scroll-fade-in">
               <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-6">
                 <Award className="w-8 h-8 text-primary" />
               </div>
@@ -71,7 +74,7 @@ const Index = () => {
               </p>
             </Card>
 
-            <Card className="p-8 text-center hover:shadow-card transition-all duration-300 hover:-translate-y-2 border-border/50">
+            <Card className="p-8 text-center hover:shadow-card transition-all duration-300 hover:-translate-y-2 border-border/50 scroll-fade-in" style={{ animationDelay: '0.2s' }}>
               <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-6">
                 <Users className="w-8 h-8 text-primary" />
               </div>
@@ -82,7 +85,7 @@ const Index = () => {
               </p>
             </Card>
 
-            <Card className="p-8 text-center hover:shadow-card transition-all duration-300 hover:-translate-y-2 border-border/50">
+            <Card className="p-8 text-center hover:shadow-card transition-all duration-300 hover:-translate-y-2 border-border/50 scroll-fade-in" style={{ animationDelay: '0.4s' }}>
               <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-6">
                 <Star className="w-8 h-8 text-primary" />
               </div>
@@ -99,7 +102,7 @@ const Index = () => {
       {/* Testimonials Section */}
       <section className="py-20 bg-primary/5">
         <div className="container mx-auto px-4">
-          <div className="text-center mb-16">
+          <div className="text-center mb-16 scroll-slide-in-left">
             <Badge variant="outline" className="mb-4 px-4 py-2">
               Customer Reviews
             </Badge>
@@ -110,7 +113,7 @@ const Index = () => {
           </div>
 
           <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-            <Card className="p-6 border-border/50 hover:shadow-card transition-shadow duration-300">
+            <Card className="p-6 border-border/50 hover:shadow-card transition-shadow duration-300 scroll-scale-in">
               <div className="flex items-center gap-1 mb-4">
                 {[...Array(5)].map((_, i) => (
                   <Star key={i} className="w-4 h-4 fill-yellow-400 text-yellow-400" />
@@ -131,7 +134,7 @@ const Index = () => {
               </div>
             </Card>
 
-            <Card className="p-6 border-border/50 hover:shadow-card transition-shadow duration-300">
+            <Card className="p-6 border-border/50 hover:shadow-card transition-shadow duration-300 scroll-scale-in" style={{ animationDelay: '0.2s' }}>
               <div className="flex items-center gap-1 mb-4">
                 {[...Array(5)].map((_, i) => (
                   <Star key={i} className="w-4 h-4 fill-yellow-400 text-yellow-400" />
@@ -152,7 +155,7 @@ const Index = () => {
               </div>
             </Card>
 
-            <Card className="p-6 border-border/50 hover:shadow-card transition-shadow duration-300">
+            <Card className="p-6 border-border/50 hover:shadow-card transition-shadow duration-300 scroll-scale-in" style={{ animationDelay: '0.4s' }}>
               <div className="flex items-center gap-1 mb-4">
                 {[...Array(5)].map((_, i) => (
                   <Star key={i} className="w-4 h-4 fill-yellow-400 text-yellow-400" />
@@ -179,7 +182,7 @@ const Index = () => {
       {/* Newsletter Section */}
       <section className="py-20 bg-hero-gradient">
         <div className="container mx-auto px-4 text-center">
-          <div className="max-w-2xl mx-auto">
+          <div className="max-w-2xl mx-auto scroll-slide-in-right">
             <Badge variant="outline" className="mb-4 px-4 py-2 border-primary-foreground/30 text-primary-foreground">
               Stay Connected
             </Badge>

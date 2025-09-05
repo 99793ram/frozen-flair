@@ -2,8 +2,11 @@ import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Star } from "lucide-react";
+import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 
 const FeaturedFlavors = () => {
+  useScrollAnimation();
+  
   const flavors = [
     {
       id: 1,
@@ -77,7 +80,7 @@ const FeaturedFlavors = () => {
     <section className="py-20 bg-background">
       <div className="container mx-auto px-4">
         {/* Section Header */}
-        <div className="text-center mb-16">
+        <div className="text-center mb-16 scroll-fade-in">
           <Badge variant="outline" className="mb-4 px-4 py-2">
             Featured Flavors
           </Badge>
@@ -93,8 +96,8 @@ const FeaturedFlavors = () => {
 
         {/* Flavors Grid */}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
-          {flavors.map((flavor) => (
-            <Card key={flavor.id} className="group hover:shadow-card transition-all duration-300 hover:-translate-y-2 border-border/50 overflow-hidden">
+          {flavors.map((flavor, index) => (
+            <Card key={flavor.id} className="group hover:shadow-card transition-all duration-300 hover:-translate-y-2 border-border/50 overflow-hidden scroll-scale-in" style={{ animationDelay: `${index * 0.1}s` }}>
               <div className="p-6">
                 {/* Flavor Image & Badge */}
                 <div className="relative mb-6">

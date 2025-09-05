@@ -4,9 +4,12 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Star, ShoppingCart, Heart } from "lucide-react";
 import { useState } from "react";
+import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 
 const Products = () => {
   const [selectedCategory, setSelectedCategory] = useState("all");
+  
+  useScrollAnimation();
 
   const categories = [
     { id: "all", name: "All Flavors" },
@@ -180,8 +183,8 @@ const Products = () => {
 
         {/* Products Grid */}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {filteredProducts.map((product) => (
-            <Card key={product.id} className="group hover:shadow-elegant transition-all duration-300 hover:-translate-y-2 border-border/50 overflow-hidden bg-card">
+          {filteredProducts.map((product, index) => (
+            <Card key={product.id} className="group hover:shadow-elegant transition-all duration-300 hover:-translate-y-2 border-border/50 overflow-hidden bg-card scroll-fade-in" style={{ animationDelay: `${index * 0.1}s` }}>
               <div className="p-6">
                 {/* Product Image & Badge */}
                 <div className="relative mb-6">

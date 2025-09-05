@@ -7,9 +7,12 @@ import { Textarea } from "@/components/ui/textarea";
 import { MapPin, Phone, Mail, Clock, MessageCircle } from "lucide-react";
 import { useState } from "react";
 import { useToast } from "@/hooks/use-toast";
+import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 
 const Contact = () => {
   const { toast } = useToast();
+  useScrollAnimation();
+  
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -100,7 +103,7 @@ const Contact = () => {
         <div className="grid lg:grid-cols-2 gap-12">
           
           {/* Contact Form */}
-          <div>
+          <div className="scroll-slide-in-left">
             <div className="mb-8">
               <Badge variant="outline" className="mb-4 px-4 py-2">
                 Send us a message
@@ -194,7 +197,7 @@ const Contact = () => {
           </div>
 
           {/* Contact Information */}
-          <div className="space-y-8">
+          <div className="space-y-8 scroll-slide-in-right">
             
             {/* Quick Contact */}
             <div>

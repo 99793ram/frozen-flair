@@ -3,6 +3,7 @@ import { Link, useLocation } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
+import { scrollToTop } from "@/hooks/useScrollAnimation";
 
 const Navigation = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -17,12 +18,17 @@ const Navigation = () => {
 
   const isActive = (path: string) => location.pathname === path;
 
+  const handleLinkClick = () => {
+    scrollToTop();
+    setIsMenuOpen(false);
+  };
+
   return (
     <nav className="bg-card/95 backdrop-blur-sm border-b border-border/50 sticky top-0 z-50">
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
-          <Link to="/" className="flex items-center space-x-2">
+          <Link to="/" className="flex items-center space-x-2" onClick={handleLinkClick}>
             <div className="text-2xl font-bold text-primary">
               MR Milkery
             </div>
@@ -37,6 +43,7 @@ const Navigation = () => {
               <Link
                 key={item.path}
                 to={item.path}
+                onClick={handleLinkClick}
                 className={cn(
                   "text-sm font-medium transition-colors hover:text-primary",
                   isActive(item.path) 
@@ -94,7 +101,7 @@ const Navigation = () => {
                     ? "text-primary bg-muted/30" 
                     : "text-foreground/70"
                 )}
-                onClick={() => setIsMenuOpen(false)}
+                onClick={handleLinkClick}
               >
                 {item.name}
               </Link>
